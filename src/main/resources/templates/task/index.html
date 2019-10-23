@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title type="text/html" th:text="${title}"></title>
+    <link rel="stylesheet" href="Task.css" type = "text/css"/>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<theader></theader>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.currentTimeStamp}"></td>
+    </tr>
+</table>
+
+<button></button>
+
+
+
+</body>
+</html>

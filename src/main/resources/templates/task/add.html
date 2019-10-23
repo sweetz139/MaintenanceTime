@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title type="text/html" th:text="${title}"></title>
+    <link rel="stylesheet" href="Task.css" type = "text/css"/>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <form enctype="multipart/form-data" method="POST" th:object="${task}">
+        <div>
+        <label th:for="name">Name</label>
+        <input type="text" th:field="*{name}"/>
+        <span th:errors="*{name}" class="error"></span>
+        </div>
+        <br/>
+        <div>
+         <label th:for="description">Description</label>
+        <br/>
+            <textarea type = "text" th:field="*{description}"
+            placeholder="Type in some notes..."></textarea>
+            <span th:errors="*{description}" class="error"></span>
+        </div>
+        <br/>
+        <input type="file"/>
+        <br/>
+        <!--<label th:for="occurence">Occurence</label>
+        <input type="text" th:field="*{occurence}"/>
+        <select th:field= "*{unit}">
+            <option value="${unit}" >year</option>
+            <option value="${unit}">month</option>
+            <option value="${unit}">week</option>
+            <option value="${unit}" >day</option>
+        </select>-->
+        <br/>
+        <input type = "submit" value="Add Task"/>
+
+    </form>
+
+</body>
+</html>
