@@ -27,8 +27,6 @@ public class Task {
 
    // private int interval;
 
-    private String unit;
-
    /* public java.sql.Timestamp addTime(int interval, String unit){
         if(unit.equals("years")){
             System.out.println("add some code here");
@@ -45,15 +43,17 @@ public class Task {
     //@NotNull
     //private Date endingPeriod;
 
-   // @NotNull
-   // private int occurence;
+    @NotNull
+    private int occurence;
 
-    //@NotNull
-    //private String unit;  // could be day,week,month or year
+    @NotNull
+    private String unit;  // could be day,week,month or year
 
     @NotNull
     @Size(min=3,max =240)
     private String description;
+
+    private Date dueDate;
 
     @Id
     @GeneratedValue
@@ -96,5 +96,13 @@ public class Task {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public int getOccurence() {
+        return occurence;
+    }
+
+    public void setOccurence(int occurence) {
+        this.occurence = occurence;
     }
 }

@@ -24,14 +24,14 @@
         <br/>
         <input type="file"/>
         <br/>
-        <!--<label th:for="occurence">Occurence</label>
+        <label th:for="occurence">Occurence</label>
         <input type="text" th:field="*{occurence}"/>
         <select th:field= "*{unit}">
-            <option value="${unit}" >year</option>
-            <option value="${unit}">month</option>
-            <option value="${unit}">week</option>
-            <option value="${unit}" >day</option>
-        </select>-->
+            <option th:value="year" >year</option>
+            <option th:value="month">month</option>
+            <option th:value="week">week</option>
+            <option th:value="day" >day</option>
+        </select>
         <br/>
         <input type = "submit" value="Add Task"/>
 
