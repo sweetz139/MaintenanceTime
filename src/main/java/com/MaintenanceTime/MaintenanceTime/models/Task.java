@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Calendar;
 
 @Entity
+@Table(name="task")
 public class Task {
 
     @NotNull
@@ -21,27 +22,32 @@ public class Task {
     // creates a calendar instance
     private Calendar calendar = Calendar.getInstance();
 
+    private Calendar new_calendar = Calendar.getInstance();
+
     private java.util.Date now = calendar.getTime();
 
     private java.sql.Timestamp currentTimeStamp = new java.sql.Timestamp(now.getTime());
 
+    //private java.sql.Date dueDateTimeStamp = new java.sql.Date(this.dueDate.getTime());
+
    // private int interval;
 
-   /* public java.sql.Timestamp addTime(int interval, String unit){
-        if(unit.equals("years")){
-            System.out.println("add some code here");
+    /*public void  addTime(int occurence, String unit){
+        if(unit.equals("year")){
+             new_calendar.add(Calendar.YEAR,occurence);
+        }
+        else if(unit.equals("month")){
+            new_calendar.add(Calendar.MONTH,occurence);
+        }
+        else if(unit.equals("week")){
+            new_calendar.add(Calendar.WEEK_OF_MONTH,occurence);
+        }
+        else if(unit.equals("day")){
+            new_calendar.add(Calendar.DATE,occurence);
         }
 
-        return
+
     }*/
-
-   // Calendar time =  (calendar.add(Calendar.DAY_OF_MONTH, 2))
-
-    //@NotNull
-    //private Date startingPeriod;
-
-    //@NotNull
-    //private Date endingPeriod;
 
     @NotNull
     private int occurence;
@@ -53,12 +59,18 @@ public class Task {
     @Size(min=3,max =240)
     private String description;
 
-    private Date dueDate;
+    //private Date dueDate = new_calendar.getTime();
+      private Date dueDate;
 
     @Id
     @GeneratedValue
+    @Column(name="id")
     private int id;
 
+
+    public int getId(){
+         return this.id;
+    }
 
     public String getName(){return name;}
 
@@ -82,13 +94,6 @@ public class Task {
         return currentTimeStamp;
     }
 
-    /*public int getInterval() {
-        return interval;
-    }*/
-
-    /*public void setInterval(int interval) {
-        this.interval = interval;
-    }*/
 
     public String getUnit() {
         return unit;
@@ -105,4 +110,14 @@ public class Task {
     public void setOccurence(int occurence) {
         this.occurence = occurence;
     }
+
+    public Date getDueDate(){
+        return this.dueDate;
+    }
+
+    /*public void setDueDate(String unit, int occurence){
+        if(unit.equals("year")){
+            this.dueDate = new_calendar.set()
+        }
+    }*/
 }

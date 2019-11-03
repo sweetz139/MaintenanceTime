@@ -8,23 +8,24 @@
 <body>
 <h1 th:text="${title}"></h1>
 <theader></theader>
-<table>
+<table class="hover-table">
     <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Date</th>
+        <!--<th>Date</th>
         <th>Interval</th>
         <th>Unit</th>
+        <th>Due Date</th>-->
     </tr>
-    <button>
+
     <tr th:each="task : ${tasks}">
         <td th:text="${task.name}"></td>
         <td th:text="${task.description}"></td>
-        <td th:text="${task.currentTimeStamp}"></td>
+        <!--<td th:text="${task.currentTimeStamp}"></td>
         <td th:text="${task.occurence}"></td>
         <td th:text="${task.unit}"></td>
+        <td th:text="${task.dueDate}"></td>-->
     </tr>
-    </button>
 </table>
 
 <button></button>

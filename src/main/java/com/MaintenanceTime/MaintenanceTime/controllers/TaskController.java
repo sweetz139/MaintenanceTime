@@ -5,13 +5,13 @@ import com.MaintenanceTime.MaintenanceTime.models.TaskDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import org.springframework.validation.Errors;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value ="task")
@@ -43,6 +43,24 @@ public class TaskController {
         taskDao.save(newTask);
         model.addAttribute("title","Add a Task");
         return "redirect:";
+    }
+
+    @RequestMapping(value="remove",method=RequestMethod.GET)
+    public String displayRemoveForm(Model model){
+        model.addAttribute("title","Remove Tasks");
+        model.addAttribute("tasks", taskDao.findAll());
+        return "task/remove";
+    }
+
+    @RequestMapping(value="remove", method=RequestMethod.POST)
+    public String processRemoveForm(@RequestParam int[] taskIds){
+        for(int taskId : taskIds){
+
+            taskDao.deleteById(taskId);
+
+        }
+        return "redirect:";
+
     }
 }
 

@@ -38,6 +38,7 @@ q:before, q:after {
 	content: none;
 }
 table {
+    margin: 20px, 0px, 0px, 0px;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -61,11 +62,6 @@ h1{
     font-size: 25px;
   }
 
-  table{
-    border-color:green;
-    border-width: 15px;
-    border-style: solid;
-  }
 
 textarea {
   width: 100%;
@@ -83,3 +79,23 @@ form{
     text-align: center;
 
 }
+
+.hover-table{
+    width:50%;
+    border-collapse:collapse;
+}
+
+.hover-table td{
+    padding:7px;
+    border:#4e95f4 1px solid;
+
+}
+
+.hover-table tr{
+    background: #b8d1f3;
+}
+
+.hover-table tr:hover{
+    background-color: #ffff99;
+}
+
