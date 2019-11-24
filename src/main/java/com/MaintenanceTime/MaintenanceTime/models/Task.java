@@ -59,6 +59,7 @@ public class Task {
     @GeneratedValue
     private int id;
 
+    public int getId(){return this.id;}
 
     public String getName(){return name;}
 

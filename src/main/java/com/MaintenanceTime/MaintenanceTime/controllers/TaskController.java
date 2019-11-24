@@ -5,10 +5,7 @@ import com.MaintenanceTime.MaintenanceTime.models.TaskDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import org.springframework.validation.Errors;
@@ -42,7 +39,13 @@ public class TaskController {
         }
         taskDao.save(newTask);
         model.addAttribute("title","Add a Task");
-        return "redirect:";
+        return "task/view-task";
+    }
+
+    @GetMapping(value="/view?={taskId}")
+    public String viewTask(Model model,@PathVariable int id){
+        model.addAttribute("task",taskDao.findById(id));
+        return "view-task";
     }
 }
 
