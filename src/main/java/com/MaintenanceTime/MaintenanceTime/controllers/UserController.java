@@ -15,16 +15,17 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping(value="", method= RequestMethod.GET)
-    public String viewLogin(Model model){
+    @RequestMapping(value="")
+    public String viewLogin(Model model, User user){
         model.addAttribute("title", "Login");
-        model.addAttribute(new User());
-        return "user/index";
+        model.addAttribute("user", user);
+        return "task/login";
     }
 
     @RequestMapping(value="", method = RequestMethod.POST)
-    public String processUserInfo( Model model){
-        return "task";
+    public String processUserInfo( Model model) {
+
+        return "redirect:" + "task";
     }
 
 }

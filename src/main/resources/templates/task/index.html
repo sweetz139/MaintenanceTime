@@ -7,10 +7,28 @@
 </head>
 <body>
 <h1 th:text="${title}"></h1>
-<ul th:each="task : ${tasks}" >
-    <a href="#"><li th:text="${task.name}"></li></a>
+<div th:unless="${tasks} and ${tasks.size()}">
+    <h1>You don't have any tasks yet create one now!</h1>
+    <a href="task/add">
+    <button>
+        Create a task
+    </button>
+    </a>
+</div>
+<div th:if="${tasks}">
+    <!--(id=${task.id})-->
+    <ul th:each="task : ${tasks}" >
+        <a th:href="@{/task/view/{id}(id=${task.id})}">
 
-</ul>
+            <li><button th:text="${task.name}"></button></li></a>
+    </ul>
+    <a href="task/add">
+        <button>
+            Add a Task
+        </button>
+    </a>
+</div>
+
 
 
 

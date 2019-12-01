@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.validation.Errors;
 
@@ -39,14 +40,17 @@ public class TaskController {
         }
         taskDao.save(newTask);
         model.addAttribute("title","Add a Task");
-        return "task/view-task";
+
+        return "task/view";
     }
 
-    @GetMapping(value="/view?={taskId}")
-    public String viewTask(Model model,@PathVariable int id){
-        model.addAttribute("task",taskDao.findById(id));
-        return "view-task";
+    @RequestMapping(value="view/{id}", method = RequestMethod.GET)
+    public String viewTask(Model model,@PathVariable("id")int id){
+        Task task = taskDao.getOne(id);
+        model.addAttribute("task",task);
+        return "task/view";
     }
+
 }
 
 
