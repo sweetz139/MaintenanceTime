@@ -51,6 +51,27 @@ public class TaskController {
         return "task/view";
     }
 
+    @RequestMapping(value="edit/{id}", method = RequestMethod.GET)
+    public String displayEditForm(Model model,@PathVariable("id")int id){
+        Task task = taskDao.getOne(id);
+        model.addAttribute("task", task);
+        model.addAttribute("title","Edit");
+        return "task/edit-task";
+    }
+
+    @RequestMapping(value="edit/{id}", method=RequestMethod.POST)
+    public String processEditForm(Model model,Task sameTask,@PathVariable("id")int id){
+        Task taskToUpdate = taskDao.getOne(id);
+        taskToUpdate.setName(sameTask.getName());
+        taskToUpdate.setDescription(sameTask.getDescription());
+        taskToUpdate.setOccurence(sameTask.getOccurence());
+        taskToUpdate.setUnit(sameTask.getUnit());
+        taskDao.save(taskToUpdate);
+        model.addAttribute("task", taskToUpdate);
+        return "task/view";
+    }
+
+
 }
 
 

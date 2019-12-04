@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <br/>
+    <br/>
+    <form enctype="multipart/form-data" method="POST" th:object="${task}">
+        <label th:for="name">Name</label>
+        <input th:text="${name}" type="text" th:field="*{name}"/>
+        <br/>
+        <label th:for="description">Description</label>
+        <textarea type="text" th:field="*{description}" th:placeholder="${description}">
+
+        </textarea>
+        <br/>
+
+        <label th:for="occurence">Occurrence</label>
+        <input type="text" th:field="*{occurence}" th:placeholder="${occurrence}"/>
+        <br/>
+        <label th:for="unit">Unit</label>
+        <select th:field= "*{unit}">
+            <option th:value="year" >year</option>
+            <option th:value="month">month</option>
+            <option th:value="week">week</option>
+            <option th:value="day" >day</option>
+        </select>
+        <br/>
+        <input type = "submit" value="Save"/>
+    </form>
+
+</body>
+</html>

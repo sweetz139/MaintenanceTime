@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" href="Task.css" type = "text/css"/>
 </head>
-<body >
-
-    <h1>Hello here are your tasks: </h1>
-    <h1  th:text="${task.name} "></h1>
-    <p  th:text="${task.description}"></p>
-
+<body>
+    <div class="view">
+    <h1 th:text="${task.name}" class="name"></h1>
+    <p  th:text="${task.description}" class="description"></p>
+    <p  th:text="${task.currentTimeStamp}" class="currentTimeStamp"></p>
+    </div>
+    <a th:href="@{/task}"><button>List of Tasks</button></a>
 
 
 
